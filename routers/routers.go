@@ -8,7 +8,7 @@ import (
 
 func helloHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
-		"message": "Hello www.topgoer.com!",
+		"message": "hhh www.topgoer.com!",
 	})
 }
 
