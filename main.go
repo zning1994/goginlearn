@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"ginlearning/routers"
 	"log"
 	"net/http"
 	"strings"
@@ -104,7 +105,17 @@ func main() {
 		v2.POST("/submit", submit)
 	}
 
-	r.Run(":8000")
+	//r.GET("/topgoer", helloHandler)
+	//if err := r.Run(":8000"); err != nil {
+	//	fmt.Println("startup service failed, err:%v\n", err)
+	//}
+
+	rr := routers.SetupRouter()
+	if err := rr.Run(":8000"); err != nil {
+		fmt.Println("startup service failed, err:%v\n", err)
+	}
+
+	//r.Run(":8000")
 }
 
 func login(c *gin.Context) {
