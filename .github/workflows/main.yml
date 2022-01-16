@@ -1,0 +1,42 @@
+name: hugo github pages generate # 名字自取
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout from repo
+      uses: actions/checkout@main
+      with:
+        ref: main
+        submodules: true
+        fetch-depth: 0
+
+    - name: Setup Hugo	# 步骤名自取
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+
+    - name: Build
+      run: |
+        cd doc
+        hugo --minify
+      
+    - name: Commit files
+      run: |
+        git config --local user.email "zhn038@gmail.com"
+        git config --local user.name "ZNing"
+        git add .
+        git commit -m "提交更新 $(date "+%Y-%m-%d %H:%M:%S")"
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main
