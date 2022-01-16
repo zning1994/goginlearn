@@ -2,4 +2,4 @@
 headless: true
 ---
 
-- [**Gin简介**]({{< relref "/gin-intro" >}})
+- [**Gin简介**]({{< relref "/pages" >}})
