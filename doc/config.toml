@@ -1,0 +1,5 @@
+baseURL = 'https://ginlearn.techina.science/'
+languageCode = 'zh-cn'
+title = 'Gin学习'
+theme = 'hugo-book'
+publishDir = '../docs'
